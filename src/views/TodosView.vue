@@ -17,6 +17,22 @@ const createTodo = (todo) => {
         isEditing: null,
     });
 };
+
+const toggleTodoComplete = (todoPos) => {
+    todoList.value[todoPos].isCompleted = !todoList.value[todoPos].isCompleted;
+};
+
+const toggleEditTodo = (todoPos) => {
+    todoList.value[todoPos].isEditing = !todoList.value[todoPos].isEditing;
+};
+
+const updateTodo = (todoVal, todoPos) => {
+    todoList.value[todoPos].todo = todoVal;
+};
+
+const deleteTodo = (todoId) => {
+    todoList.value = todoList.value.filter((todo) => todo.id !== todoId);
+};
 </script>
 
 <template>
@@ -24,7 +40,16 @@ const createTodo = (todo) => {
         <h1>Create Todo</h1>
         <TodoCreator @create-todo="createTodo" />
         <ul class="todo-list" v-if="todoList.length > 0">
-            <TodoItem v-for="todo in todoList" :key="todo.id" :todo="todo" />
+            <TodoItem
+                v-for="(todo, index) in todoList"
+                :key="todo.id"
+                :todo="todo"
+                :index="index"
+                @toggle-complete="toggleTodoComplete"
+                @edit-todo="toggleEditTodo"
+                @update-todo="updateTodo"
+                @delete-todo="deleteTodo"
+            />
         </ul>
         <p v-else class="todos-msg">
             <Icon
