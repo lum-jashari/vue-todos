@@ -1,29 +1,56 @@
-# vue-todos
+# Vue.js Composition API Todo App
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a simple Todo application developed using the Vue.js composition API. It serves as a learning project to understand and practice the Vue.js composition API.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Add new tasks to the todo list
+- Mark tasks as completed
+- Edit task content
+- Delete tasks from the todo list
 
-## Customize configuration
+## Installation
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1. Clone the repository:
 
-## Project Setup
+   ```bash
+   git clone https://github.com/lum-jashari/vue-todos.git
+   ```
 
-```sh
-npm install
-```
+2. Navigate to the project directory:
 
-### Compile and Hot-Reload for Development
+   ```bash
+   cd vue-todos
+   ```
 
-```sh
-npm run dev
-```
+3. Install dependencies:
 
-### Compile and Minify for Production
+   ```bash
+   npm install
+   ```
 
-```sh
-npm run build
-```
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Visit `http://localhost:5743` in your browser to view the application.
+
+## Technologies Used
+
+- Vue.js
+- Vue Router
+- Composition API
+- SCSS
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- [Vue.js](https://vuejs.org/)
+- [Vue Router](https://router.vuejs.org/)
+- [Composition API RFC](https://composition-api.vuejs.org/)
+- [TodoMVC](http://todomvc.com/) for inspiration
