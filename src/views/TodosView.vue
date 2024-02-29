@@ -5,9 +5,34 @@ import TodoCreator from "@/components/TodoCreator.vue";
 import TodoItem from "@/components/TodoItem.vue";
 
 import { uid } from "uid";
-import { ref } from "vue";
+import { ref, watch, computed } from "vue";
 
 const todoList = ref([]);
+watch(
+    todoList,
+    () => {
+        setTodoListLocalStorage();
+    },
+    {
+        deep: true,
+    }
+);
+const todoCompleted = computed(() => {
+    return todoList.value.every((todo) => todo.isCompleted);
+});
+
+const fetchTodoList = () => {
+    const saveTodoList = JSON.parse(localStorage.getItem("todoList"));
+    if (saveTodoList) {
+        todoList.value = saveTodoList;
+    }
+};
+
+fetchTodoList();
+
+const setTodoListLocalStorage = () => {
+    localStorage.setItem("todoList", JSON.stringify(todoList.value));
+};
 
 const createTodo = (todo) => {
     todoList.value.push({
@@ -58,6 +83,10 @@ const deleteTodo = (todoId) => {
                 height="22px"
             />
             <span>You have no todo's to complete. Add one!</span>
+        </p>
+        <p v-if="todoCompleted && todoList.length > 0" class="todos-msg">
+            <Icon icon="noto-v1:party-popper" />
+            <span>You have completed all your todos!</span>
         </p>
     </main>
 </template>
