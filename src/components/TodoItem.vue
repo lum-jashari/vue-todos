@@ -1,5 +1,6 @@
 <script setup>
 import { Icon } from "@iconify/vue";
+
 const props = defineProps({
     todo: {
         type: Object,
@@ -10,7 +11,8 @@ const props = defineProps({
         required: true,
     },
 });
-defineEmits(["toggle-complete"]);
+
+defineEmits(["toggle-complete", "edit-todo", "update-todo"]);
 </script>
 
 <template>
@@ -21,7 +23,12 @@ defineEmits(["toggle-complete"]);
             @input="$emit('toggle-complete', index)"
         />
         <div class="todo">
-            <input v-if="todo.isEditing" type="text" :value="todo.todo" />
+            <input
+                @input="$emit('update-todo', $event.target.value, index)"
+                v-if="todo.isEditing"
+                type="text"
+                :value="todo.todo"
+            />
             <span v-else :class="{ 'completed-todo': todo.isCompleted }">{{
                 todo.todo
             }}</span>
@@ -34,6 +41,7 @@ defineEmits(["toggle-complete"]);
                 width="22px"
                 height="22px"
                 style="color: #41b080"
+                @click="$emit('edit-todo', index)"
             />
             <Icon
                 v-else
@@ -42,6 +50,7 @@ defineEmits(["toggle-complete"]);
                 width="22px"
                 height="22px"
                 style="color: #41b080"
+                @click="$emit('edit-todo', index)"
             />
             <Icon
                 icon="ph:trash"
