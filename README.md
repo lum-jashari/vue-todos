@@ -37,6 +37,10 @@ This is a simple Todo application developed using the Vue.js composition API. It
 
 5. Visit `http://localhost:5743` in your browser to view the application.
 
+## Screenshots
+
+![vue-todo-app screenshot](public/vue-todo-app.jpg?raw=true "Vue todo App")
+
 ## Technologies Used
 
 - Vue.js
